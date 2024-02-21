@@ -150,7 +150,7 @@ export function doubleCsrf({
     // TODO: next major update, breaking change, make a single object parameter
     req.csrfToken = (overwrite?: boolean, validateOnReuse?: boolean) =>
       generateToken(req, res, overwrite, validateOnReuse);
-    if (ignoredMethodsSet.has(req.method as RequestMethod)) {
+    if (req.ignoreCsrfToken === true || ignoredMethodsSet.has(req.method as RequestMethod)) {
       next();
     } else if (validateRequest(req)) {
       next();

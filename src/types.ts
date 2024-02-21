@@ -13,6 +13,7 @@ declare module "http" {
 declare module "express-serve-static-core" {
   export interface Request {
     csrfToken?: (overwrite?: boolean) => ReturnType<CsrfTokenCreator>;
+    ignoreCsrfToken?: boolean;
   }
 }
 
